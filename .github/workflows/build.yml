@@ -1,0 +1,41 @@
+name: 2048 App
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  generate-exe:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Raylib and Run Makefile
+      run: sudo apt install libglfw3-dev libopenal-dev libxxf86vm-dev libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev; git clone --depth 1 https://github.com/raysan5/raylib.git raylib; cd raylib/src/; make PLATFORM=PLATFORM_DESKTOP; sudo make install; cd ../../; make;
+    
+    - name: Upload GUI Executable
+      if: ${{ always() }}
+
+      uses: actions/upload-artifact@v4
+      with:
+        name: GUI Executable
+        path: ./the-matrix
+
+    - name: Build backend test
+      run: make backend-test; ./backend-test > test_results.txt; gcov *.gcda >> coverage_report.txt; 
+
+    - name: Upload test results
+      if: ${{ always() }}
+
+      uses: actions/upload-artifact@v4
+      with:
+        name: Test results
+        path: ./test_results.txt
+    
+    - name: Upload coverage report
+      if: ${{ always() }}
+
+      uses: actions/upload-artifact@v4
+      with:
+        name: Coverage report
+        path: ./coverage_report.txt
