@@ -3,6 +3,9 @@
 ### Description of Game!
 The game aims to slide numbered tiles on a grid to combine them to create a tile with the number 2048. However, one can continue to play the game after reaching the goal, creating tiles with larger numbers. - [Source](https://healthybrains.org/2048-game/)
 
+### Preview
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="GameScreen.png" alt="GameScreen" width="350"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="EndScreen.png" alt="EndScreen" width="350"/>
+
 ### Prerequisites ✅
 1. **Have access to an Ubuntu distribution or use VirtualBox**
    - Use the following resource as a guide if you need to set this up: [Tutorial on Ubuntu for VirtualBox](https://www.geeksforgeeks.org/how-to-install-ubuntu-on-virtualbox/)
